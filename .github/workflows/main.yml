@@ -1,0 +1,25 @@
+name: Smart Select
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Test
+        run: |
+          echo '1.test: ${GITHUB_REF_SLUG}'
+          echo '2.test: "${GITHUB_REF_SLUG}"'
+          echo '3.test: "'${GITHUB_REF_SLUG}'"'
+          echo '4.test: "'${{GITHUB_REF_SLUG}}'"'
+          echo '5.test: "${{GITHUB_REF_SLUG}}"'
