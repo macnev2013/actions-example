@@ -19,7 +19,3 @@ jobs:
       - name: Test
         run: |
           echo '1.test: ${GITHUB_REF_SLUG}'
-          echo '2.test: "${GITHUB_REF_SLUG}"'
-          echo '3.test: "'${GITHUB_REF_SLUG}'"'
-          echo '4.test: "'${{GITHUB_REF_SLUG}}'"'
-          echo '5.test: "${{GITHUB_REF_SLUG}}"'
