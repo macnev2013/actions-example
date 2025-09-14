@@ -1,10 +1,46 @@
-image: python:3.11
-install: |
-  ls
-test: |
-  ls
-build: |
-  ls
-env: |
-  DATABASE_URL=sqlite:///test.db
-  DEBUG=false
+version: "1.0"
+name: "My Project CI"
+
+global:
+  timeout: 600  # 10 minutes timeout
+  max_parallel_jobs: 2
+
+env:
+  NODE_ENV: "test"
+  CI: "true"
+
+runner:
+  type: "shell"  # Use 'docker' if you have Docker installed
+
+cache:
+  enabled: true
+  paths:
+    - ".cache"
+    - "node_modules"
+    - ".venv"
+    - "vendor"
+
+stages:
+  - install
+  - test
+  - build
+
+# Define your jobs
+jobs:
+  # Install dependencies
+  install_deps:
+    stage: install
+    script:
+      - echo "Installing dependencies..."
+  # Run tests
+  run_tests:
+    stage: test
+    script:
+      - echo "Running tests..."
+    allow_failure: false  # Build will fail if tests fail
+
+  # Build application
+  build_app:
+    stage: build
+    script:
+      - echo "Building application..."
