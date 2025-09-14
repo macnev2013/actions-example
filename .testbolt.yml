@@ -32,11 +32,15 @@ jobs:
     stage: install
     script:
       - echo "Installing dependencies..."
+      - ls
+      - pwd
   # Run tests
   run_tests:
     stage: test
     script:
       - echo "Running tests..."
+      - ls
+      - pwd
     allow_failure: false  # Build will fail if tests fail
 
   # Build application
@@ -44,3 +48,5 @@ jobs:
     stage: build
     script:
       - echo "Building application..."
+      - ls
+      - pwd
