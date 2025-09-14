@@ -24,6 +24,7 @@ stages:
   - install
   - test
   - build
+  - test1
 
 # Define your jobs
 jobs:
@@ -50,3 +51,8 @@ jobs:
       - echo "Building application..."
       - ls
       - pwd
+
+  test1_stage:
+    stage: test1
+    script:
+      - echo "Test1 stage"
